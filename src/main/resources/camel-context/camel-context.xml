@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+        http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <http-conf:conduit name="*.http-conduit">
+        <http-conf:client ConnectionTimeout="600" ReceiveTimeout="600" />
+    </http-conf:conduit>
+
+    <cxf:cxfEndpoint id="sendSmsEndpoint"
+                     address="http://ltcservice.laotel.com:5577/Services.asmx"
+                     serviceClass="com.kona.demosmsgw.stub.ServicesSoap"
+                     wsdlURL="http://ltcservice.laotel.com:5577/Services.asmx?wsdl"
+    >
+    </cxf:cxfEndpoint>
+
+</beans>
