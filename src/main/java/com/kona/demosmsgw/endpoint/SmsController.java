@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -18,7 +20,7 @@ public class SmsController
     private final SmsService smsService;
 
     @PostMapping("/send-sms")
-    public SendSMSResponse sendSms(@RequestBody SendSmsRequestDto sendSmsRequest){
+    public SendSMSResponse sendSms(@Valid @RequestBody SendSmsRequestDto sendSmsRequest){
         return smsService.sendSoapRequest(sendSmsRequest);
     }
 

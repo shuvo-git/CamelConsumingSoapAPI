@@ -57,6 +57,8 @@ public class SmsServiceImpl implements SmsService {
                     HeaderResult.class
             );
 
+
+
             SendSMSResponse buildResponse = new SendSMSResponse();
             buildResponse.setSendSMSResult(response);
             return buildResponse;
